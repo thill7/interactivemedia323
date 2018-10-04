@@ -14,12 +14,62 @@
 	color: white;
 	}
 </style>
+<script>
+$(document).ready( function() {
+var redditAPIBase = "https://api.reddit.com/r/aww/best.json";
+	var urls = [];
+	function moreAww() {
+		$.ajax({
+				type: "GET",
+				url: redditAPIBase,
+				dataType: "json",
+				success: function( results ) {
+					var listings = results.data.children.data;
+					urls = [];
+					$.each(results.data.children, function(i, item) {
+						var thisURL = item.data.url;
+						if(thisURL.indexOf(".jpg") > -1 || thisURL.indexOf(".png") > -1) {
+							urls.push(item.data.url);
+						}
+					});
+				},
+				complete: function() {
+					var entry = Math.floor(Math.random() * urls.length);
+					if(urls[entry]) {
+						$("#picHolder").html($("<img>").addClass("imgResult").css({"max-height":(screen.height * 0.7)+"px","max-width":"100%"}).attr("src",urls[entry]));
+					}
+				}
+		});
+	}
+	$("#awwButton").click( function() {
+		moreAww();
+	});
+});
+</script>
 </head>
 <body>
 <div class="container-fluid">
 	<div class="jumbotron">
 	<h3>Tanner Hill</h3>
 	</div>
+</div>
+<div class="row" align="center">
+<div class="col-lg-4">
+</div>
+<div class="col-lg-4">
+<div class="panel panel-default">
+	<div class="panel-heading">
+		<h3>/r/Aww</h3>
+	</div>
+	<div class="panel-body" id="picHolder">
+	</div>
+	<div class="panel-footer">
+		<button id="awwButton" class="btn btn-info">Click for Aww</button>
+	</div>
+</div>
+<div class="col-lg-4">
+</div>
+</div>
 </div>
 </body>
 </html>
