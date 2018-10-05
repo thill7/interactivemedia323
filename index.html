@@ -30,9 +30,18 @@ var redditAPIBase = "https://api.reddit.com/r/"+subredditText+"/best.json";
 					urls = [];
 					$.each(results.data.children, function(i, item) {
 						var thisURL = item.data.url;
+						console.log($(".imgResult").eq(0).attr("src") + " " + thisURL);
 						if(thisURL.indexOf(".jpg") > -1 || thisURL.indexOf(".png") > -1 || thisURL.indexOf(".gif") > -1) {
-							if(item.data.over_18 == false) {
-								urls.push(item.data.url);
+							if(!($(".imgResult").eq(0).attr("src")) || $(".imgResult").eq(0).attr("src").indexOf(thisURL) == -1) {	
+								if(item.data.over_18 == false) {
+									if(thisURL.indexOf(".gifv") == -1) {
+										urls.push(item.data.url);
+									}
+									else { 
+										thisURL = thisURL.replace(".gifv",".mp4");
+										urls.push(thisURL);
+									}
+								}
 							}
 						}
 					});
@@ -40,7 +49,7 @@ var redditAPIBase = "https://api.reddit.com/r/"+subredditText+"/best.json";
 				complete: function() {
 					var entry = Math.floor(Math.random() * urls.length);
 					if(urls[entry]) {
-						if(urls[entry].indexOf(".gifv") == -1) {
+						if(urls[entry].indexOf(".mp4") == -1) {
 							$("#picHolder").html($("<img>").addClass("imgResult").css({"max-height":(screen.height * 0.7)+"px","max-width":"100%"}).attr("src",urls[entry]));
 						}
 						else {
@@ -55,7 +64,8 @@ var redditAPIBase = "https://api.reddit.com/r/"+subredditText+"/best.json";
 	});
 $("#subreddit").on("change",function() {
 	subredditText = $(this).val();
-	$(".panel-heading > h3").text(subredditText);
+	$(".panel-heading > h3").text("/r/" + $(this).val().split("")[0].toUpperCase() + $(this).val().substring(1));
+	$("#awwButton").html("Click for " + $(this).val().split("")[0].toUpperCase() + $(this).val().substring(1) + "");
 });
 });
 </script>
