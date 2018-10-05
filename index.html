@@ -28,15 +28,22 @@ var redditAPIBase = "https://api.reddit.com/r/aww/best.json";
 					urls = [];
 					$.each(results.data.children, function(i, item) {
 						var thisURL = item.data.url;
-						if(thisURL.indexOf(".jpg") > -1 || thisURL.indexOf(".png") > -1) {
-							urls.push(item.data.url);
+						if(thisURL.indexOf(".jpg") > -1 || thisURL.indexOf(".png") > -1 || thisURL.indexOf(".gif") > -1) {
+							if(item.data.over_18 == false) {
+								urls.push(item.data.url);
+							}
 						}
 					});
 				},
 				complete: function() {
 					var entry = Math.floor(Math.random() * urls.length);
 					if(urls[entry]) {
-						$("#picHolder").html($("<img>").addClass("imgResult").css({"max-height":(screen.height * 0.7)+"px","max-width":"100%"}).attr("src",urls[entry]));
+						if(urls[entry].indexOf(".gifv") == -1) {
+							$("#picHolder").html($("<img>").addClass("imgResult").css({"max-height":(screen.height * 0.7)+"px","max-width":"100%"}).attr("src",urls[entry]));
+						}
+						else {
+							$("#picHolder").html($("<video>").addClass("imgResult").css({"max-height":(screen.height * 0.7)+"px","max-width":"100%"}).attr({"autoplay":"","loop":""}).html("<source src='"+urls[entry]+"' type='video/mp4'></source>"));
+						}
 					}
 				}
 		});
@@ -72,4 +79,4 @@ var redditAPIBase = "https://api.reddit.com/r/aww/best.json";
 </div>
 </div>
 </body>
-</html>
+</html>"video/mp4"
