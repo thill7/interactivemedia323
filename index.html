@@ -13,6 +13,9 @@
 	background-color: black;
 	color: white;
 	}
+	.navbar-inverse {
+		max-width: 100%;
+	}
 </style>
 <script>
 $(document).ready( function() {
@@ -73,9 +76,20 @@ $("#subreddit").on("change",function() {
 <body>
 <div class="container-fluid">
 	<div class="jumbotron">
-	<h3>Tanner Hill</h3>
+	<h2>Tanner Hill</h2>
 	</div>
 </div>
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">Fall 2018</a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li class="active"><a href="#">Home</a></li>
+      <li><a href="./project1/index.html">Project 1</a></li>
+    </ul>
+  </div>
+</nav>
 <div class="row" align="center">
 <div class="col-lg-4">
 </div>
