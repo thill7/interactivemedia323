@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+	<title>Tanner Hill</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="UTF-8">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<style>
+</style>
+<script>
+$(document).ready( function() {
+var Text = "Wershler-Henry has often remarked in conversation that, for poetry, the webpage represents the first, truly new, unit of typographic composition since the invention of the page itself. While lyricists, inspired by Olson,might portray the page as a blank slate for their own proprioceptive investigations, a new era of poetry has begun to suggest that the web page may provide the first, truly synaesthetic 'composition by field,' in which the page no longer offers a passive terrain for the exploration of a lyrical thought because now the page itself can interact both dynamically and sensorially with the poet, engaging every sense at once in an immersive experience beyond the limited purview of the word. While designers,employed by Yahoo, may build a web page so that it merely acts as yet another medium for the delivery of printed, textual information, a small cadre of technically adept poets has begun to experiment with the aesthetic potential of this exciting, literary resource. Since poetry has virtually exhausted the exploration of its own aesthetic formalism, any subsequent innovation in poetry seems unlikely to occur without a concomitant deformation of the tools used, not only in composition, but also in publication. The poetry of the future may have to explode the formal limits of the book, finding a new way to disrupt the stratified sequencing of the page, doing so, by actively engaging the experimental technologies of cybernetic publishing. I draw particular attention to one website by James Tindall in order to suggest, tentatively, that such an endeavour may represent a kind of workshop for a hypothetic literature of the future.";
+var alphabet = "abcdefghijklmnopqrstuvwxyz";
+var alphaArray = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"];
+var TextCounter = 0;
+var readyNext = true;
+setInterval(function() {
+		var currentChar = Text[TextCounter].toLowerCase();
+		if(alphaArray.indexOf(currentChar.toLowerCase()) > -1) {
+		var currentURL = "https://pixabay.com/api/?key=10327711-6dbe01aefc91fc0527607adcd&q=letter,%20"+currentChar+"&image_type=vector";
+		console.log(currentURL);
+		$.ajax({
+			type: "GET",
+			dataType: "json",
+			url: currentURL,
+			success: function(data) {
+			var hits = data.hits;
+				$.each(hits, function(i, item) {
+					var randomIndex = Math.floor(Math.random() * hits.length);
+					if(hits[randomIndex].user.indexOf("OpenClipart-Vectors") > -1) {
+						$("<div>").css({"display":"inline-block"}).html("<img src='"+hits[randomIndex].largeImageURL+"' style='max-height:"+(window.innerHeight * 0.05)+"px;object-fit:scale-down;'></img>").appendTo("#picHolder");
+						return false;
+					}
+				});
+				TextCounter++;
+			},
+			complete: function() {
+			}
+		});
+		}
+		else {
+			$("<div>").css({"display":"inline-block","height":(window.innerHeight * 0.05)+"px","width":(window.innerWidth * 0.05)+"px"}).html(currentChar).appendTo("#picHolder");
+			TextCounter++;
+		}
+		if(TextCounter > Text.length) {
+			this.clearInterval;
+		}
+}, 2000);
+var postTimer = 0;
+/**setInterval( function() {
+	var currentLetter = Text[postTimer];
+		var letterURL = alphaArray[(alphabet.indexOf(currentLetter))];
+		$("<div>").html("<img src='"+letterURL+"' style='display:inline-block;float:left;max-height:"+(window.innerHeight *0.1)+"px;'></img>").appendTo("#picHolder");
+	postTimer++;
+}, 2000);*/
+});
+</script>
+<body>
+<div class="panel panel-default" align="center">
+<div class="panel-heading">
+<h3>The Square Root of Negative 1</h3>
+</div>
+<div class="panel-body" id="picHolder">
+</div>
+</div>
+</body>
+</html>
