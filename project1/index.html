@@ -11,7 +11,7 @@
 </style>
 <script>
 $(document).ready( function() {
-var Text = "Wershler-Henry has often remarked in conversation that, for poetry, the webpage represents the first, truly new, unit of typographic composition since the invention of the page itself. While lyricists, inspired by Olson,might portray the page as a blank slate for their own proprioceptive investigations, a new era of poetry has begun to suggest that the web page may provide the first, truly synaesthetic 'composition by field,' in which the page no longer offers a passive terrain for the exploration of a lyrical thought because now the page itself can interact both dynamically and sensorially with the poet, engaging every sense at once in an immersive experience beyond the limited purview of the word. While designers,employed by Yahoo, may build a web page so that it merely acts as yet another medium for the delivery of printed, textual information, a small cadre of technically adept poets has begun to experiment with the aesthetic potential of this exciting, literary resource. Since poetry has virtually exhausted the exploration of its own aesthetic formalism, any subsequent innovation in poetry seems unlikely to occur without a concomitant deformation of the tools used, not only in composition, but also in publication. The poetry of the future may have to explode the formal limits of the book, finding a new way to disrupt the stratified sequencing of the page, doing so, by actively engaging the experimental technologies of cybernetic publishing. I draw particular attention to one website by James Tindall in order to suggest, tentatively, that such an endeavour may represent a kind of workshop for a hypothetic literature of the future.";
+var Text = "Wershler-Henry has often remarked in conversation that, for poetry, the webpage represents the first, truly new, unit of typographic composition since the invention of the page itself. While lyricists, inspired by Olson,might portray the page as a blank slate for their own proprioceptive investigations, a new era of poetry has begun to suggest that the web page may provide the first, truly synaesthetic 'composition by field,' in which the page no longer offers a passive terrain for the exploration of a lyrical thought because now the page itself can interact both dynamically and sensorially with the poet, engaging every sense at once in an immersive experience beyond the limited purview of the word. While designers,employed by Yahoo, may build a web page so that it merely acts as yet another medium for the delivery of printed, textual information, a small cadre of technically adept poets has begun to experiment with the aesthetic potential of this exciting, literary resource. Since poetry has virtually exhausted the exploration of its own aesthetic formalism, any subsequent innovation in poetry seems unlikely to occur without a concomitant deformation of the tools used, not only in composition, but also in publication. The poetry of the future may have to explode the formal limits of the book, finding a new way to disrupt the stratified sequencing of the page, doing so, by actively engaging the experimental technologies of cybernetic publishing. I draw particular attention to one website by James Tindall in order to suggest, tentatively, that such an endeavour may represent a kind of workshop for a hypothetic literature of the future. 'The Square Root of -1' is a website that offers a weird index of dynamic, concrete poetry and abstract, kinetic doodles. The site comprises seventy, black-and-white web pages of interactive iconography, each page of which evokes a kind of algebraic film noir--the anemic cinema of mathematics. The techno soundtrack for the site recalls the grainy rustle of a gramophone, broadcast at twilight on some enigmatic, but nostalgic, radio show. The user must first visit a periodic table of indexical icons, each row of which pertains to a given motif, be it vibrating elastics, pulsating slinkies, or revolving fractals. The user navigates among these icons in order to visit specific webpages, each of which permits the user to interact with the whimsical daydreams of a mournful geometer. The interactive experiences almost seem to dramatize the simple beauty of algebra, doing so through apoetics of sinusoids and epicycles. A wavy line, graphed upon a chart, does not plot data, but undulates, like ocean surf. A set of tiny rectangles might shrink and expand in synch with the oscillations of such a line. A wire cube ricochets around inside the tensile frame of its elastic cords. Ablack globe vibrates at an ultrahigh frequency, modulated by the user, who can monitor the cardiograms of dark pulsars and evil strobes. A string of pearls might float like a spiral galaxy of bubbles in a vacuum. A phenakistoscope might in turn depict the flickering image of a dove inflight. A user can even go on to sort through a dreamy toybox of surreal carousels and ghostly zoetropes--electronic playthings, like old music-boxes or old video-games.";
 var alphabet = "abcdefghijklmnopqrstuvwxyz";
 var alphaArray = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"];
 var TextCounter = 0;
@@ -19,7 +19,7 @@ var readyNext = true;
 setInterval(function() {
 		var currentChar = Text[TextCounter].toLowerCase();
 		if(alphaArray.indexOf(currentChar.toLowerCase()) > -1) {
-		var currentURL = "https://pixabay.com/api/?key=10327711-6dbe01aefc91fc0527607adcd&q=letter,%20"+currentChar+"&image_type=vector";
+		var currentURL = "https://pixabay.com/api/?key=10327711-6dbe01aefc91fc0527607adcd&q=letter+alphabet+"+currentChar+"&image_type=vector";
 		console.log(currentURL);
 		$.ajax({
 			type: "GET",
@@ -27,13 +27,10 @@ setInterval(function() {
 			url: currentURL,
 			success: function(data) {
 			var hits = data.hits;
-				$.each(hits, function(i, item) {
-					var randomIndex = Math.floor(Math.random() * hits.length);
-					if(hits[randomIndex].user.indexOf("OpenClipart-Vectors") > -1) {
-						$("<div>").css({"display":"inline-block"}).html("<img src='"+hits[randomIndex].largeImageURL+"' style='max-height:"+(window.innerHeight * 0.05)+"px;object-fit:scale-down;'></img>").appendTo("#picHolder");
-						return false;
-					}
-				});
+				
+					var randomIndex = Math.floor(Math.random() * 5);
+					$("<div>").css({"display":"inline-block"}).html("<img src='"+hits[randomIndex].largeImageURL+"' style='max-height:"+(window.innerHeight * 0.05)+"px;object-fit:scale-down;'></img>").appendTo("#picHolder");	
+
 				TextCounter++;
 			},
 			complete: function() {
@@ -45,9 +42,9 @@ setInterval(function() {
 			TextCounter++;
 		}
 		if(TextCounter > Text.length) {
-			this.clearInterval;
+			clearInterval(this);
 		}
-}, 2000);
+}, 1000);
 var postTimer = 0;
 /**setInterval( function() {
 	var currentLetter = Text[postTimer];
@@ -58,17 +55,6 @@ var postTimer = 0;
 });
 </script>
 <body>
-<nav class="navbar navbar-inverse">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <a class="navbar-brand" href="#">Fall 2018</a>
-    </div>
-    <ul class="nav navbar-nav">
-      <li><a href="../index.html">Home</a></li>
-      <li class="active"><a href="./project1/index.html">Project 1</a></li>
-    </ul>
-  </div>
-</nav>
 <div class="panel panel-default" align="center">
 <div class="panel-heading">
 <h3>The Square Root of Negative 1</h3>
@@ -76,28 +62,5 @@ var postTimer = 0;
 <div class="panel-body" id="picHolder">
 </div>
 </div>
-<div class="row" align="center">
-<div class="col-lg-12">
-	<h2>Letter by letter, with Pixabay API</h2>
-	<p>This method of posting was logistically difficult, but I feel like it worked at least 80% as intended. It's hard to see what's going on behind the scenes, but the text has been stored as a variable in this page. For each letter of each word, an image search for that letter is made and then added to the page. Since a search is made for each letter, the results should be unique each time the page is loaded.</p>
-	<p>I chose to do this in order to emphasize a point touched on in the text illustrated: webpages can be a medium for dynamic poetry, however loosely poetry may be defined in this context. As Bok argues, any novel development in poetry is unlikely to occure unless the tools used are reevaluated.</p>
-</div>	
-</div>
-<div class="row" align="center">
-<div class="col-lg-12">
-<blockquote class="imgur-embed-pub" lang="en" data-id="a/h4hwhXM"><a href="//imgur.com/h4hwhXM">The Square Root of -1</a></blockquote><script async src="//s.imgur.com/min/embed.js" charset="utf-8"></script>
-</div>
-	<div class="col-lg-12">
-		<h2>Reddit, JSON, and Imgur</h2>
-		<p>This one, I'll admit, became a lot more covoluted than originally intended. First, I created a subreddit: /r/thesquarerootofnegative1. Then I made a post with the first line of the text, followed by a chain of replies with two separate accounts until the entirety was spelled out. But what you're seeing here isn't that post, but rather all of the information about those posts as its seen by the servers, in a format known as JSON (Javascript Object Notation): basically, lists of lists. This kind of data has numerous applications, and was actually used to create the little applet on my homepage, which loads random images from different subreddits. My purpose in this one is a little more abstract. I wanted to try to show the layers of a webpage that aren't usually visible. The rigging that makes the webpage as a medium truly unique.</p>
-	</div>
-</div>
-<div class="row">
-	<div class="col-lg-12">
-		<div class="well" align="center">
-			<a href="http://www.ubu.com/papers/ol/bok.html">Original Text</a>
-		</div>
-	</div>
-	</div>
 </body>
 </html>
