@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+	<title>Tanner Hill</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="UTF-8">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<style>
+.panel-footer {
+	background-color: black;
+	color: white;
+}
+.panel-heading {
+	background-color: black;
+	color: white;
+}
+</style>
+<script>
+$(document).ready( function() {
+var ogText = "Wershler-Henry has often remarked in conversation that, for poetry, the webpage represents the first, truly new, unit of typographic composition since the invention of the page itself. While lyricists, inspired by Olson,might portray the page as a blank slate for their own proprioceptive investigations, a new era of poetry has begun to suggest that the web page may provide the first, truly synaesthetic 'composition by field,' in which the page no longer offers a passive terrain for the exploration of a lyrical thought because now the page itself can interact both dynamically and sensorially with the poet, engaging every sense at once in an immersive experience beyond the limited purview of the word. While designers,employed by Yahoo, may build a web page so that it merely acts as yet another medium for the delivery of printed, textual information, a small cadre of technically adept poets has begun to experiment with the aesthetic potential of this exciting, literary resource. Since poetry has virtually exhausted the exploration of its own aesthetic formalism, any subsequent innovation in poetry seems unlikely to occur without a concomitant deformation of the tools used, not only in composition, but also in publication. The poetry of the future may have to explode the formal limits of the book, finding a new way to disrupt the stratified sequencing of the page, doing so, by actively engaging the experimental technologies of cybernetic publishing. I draw particular attention to one website by James Tindall in order to suggest, tentatively, that such an endeavour may represent a kind of workshop for a hypothetic literature of the future. 'The Square Root of -1' is a website that offers a weird index of dynamic, concrete poetry and abstract, kinetic doodles. The site comprises seventy, black-and-white web pages of interactive iconography, each page of which evokes a kind of algebraic film noir--the anemic cinema of mathematics. The techno soundtrack for the site recalls the grainy rustle of a gramophone, broadcast at twilight on some enigmatic, but nostalgic, radio show. The user must first visit a periodic table of indexical icons, each row of which pertains to a given motif, be it vibrating elastics, pulsating slinkies, or revolving fractals. The user navigates among these icons in order to visit specific webpages, each of which permits the user to interact with the whimsical daydreams of a mournful geometer. The interactive experiences almost seem to dramatize the simple beauty of algebra, doing so through apoetics of sinusoids and epicycles. A wavy line, graphed upon a chart, does not plot data, but undulates, like ocean surf. A set of tiny rectangles might shrink and expand in synch with the oscillations of such a line. A wire cube ricochets around inside the tensile frame of its elastic cords. Ablack globe vibrates at an ultrahigh frequency, modulated by the user, who can monitor the cardiograms of dark pulsars and evil strobes. A string of pearls might float like a spiral galaxy of bubbles in a vacuum. A phenakistoscope might in turn depict the flickering image of a dove inflight. A user can even go on to sort through a dreamy toybox of surreal carousels and ghostly zoetropes--electronic playthings, like old music-boxes or old video-games. The square root of -1 refers to an imaginary number outside the set, not only of rational, but of irrational, values--the two subsets of the real.The website positions itself in a pataphysical domain that lies somewhere beyond reason and unreason--a 'surrational' domain of the unreal, where the mathematician might aesthetically escape the algorithmic constraints of his or her thinking in order to become a kind of 'Astro-Kid,' able to explore the science-fiction of an otherwise impossible hypothesis. The website suggests that this kind of speculative mathematics remains no less surreal than the radical poetics of the avant-garde. The digital program now provides a new prosthesis for the unconscious so that even a mathematician can write poetry in a manner no less automatic than the writing of a surrealist. The website suggests that, in a world of such digitalized ghostwriters, everyone who logs onto the Internet steps aboard a merry-go-round of anonymous, acephalic men, who trade their heads with each other, relaying empty ideas in a cycle of automatic exchanges. The website, however, inserts itself into this economy in order to provoke the poetic swerve of a detournement. The website in effect provides a sample of pataphysical alternatives to the meandering diversions of the Internet--after all, the act of playing Space Invaders in a black-and-white format almost lends a classic quality of artsiness to the mundane deed of killing time. The website in effect lays some of the theoretical foundations for an online, visual poetry of the future--what Tindall might call the 'biproduct' of an imaginary potential.";
+var Text = ogText;
+var alphabet = "abcdefghijklmnopqrstuvwxyz";
+var alphaArray = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"];
+var TextCounter = 0;
+var readyNext = true;
+var mainPage = setInterval(function() {
+		var currentChar = Text[TextCounter].toLowerCase();
+		if(alphaArray.indexOf(currentChar.toLowerCase()) > -1) {
+		var currentURL = "https://pixabay.com/api/?key=10327711-6dbe01aefc91fc0527607adcd&q=letter+alphabet+"+currentChar+"&image_type=vector";
+		console.log(currentURL);
+		$.ajax({
+			type: "GET",
+			dataType: "json",
+			url: currentURL,
+			success: function(data) {
+			var hits = data.hits;
+				
+					var randomIndex = Math.floor(Math.random() * 5);
+					$("<div>").css({"display":"inline-block"}).html("<img src='"+hits[randomIndex].largeImageURL+"' style='max-height:"+(window.innerHeight * 0.05)+"px;object-fit:scale-down;'></img>").appendTo("#picHolder");	
+
+				TextCounter++;
+			},
+			complete: function() {
+			}
+		});
+		}
+		else {
+			$("<div>").css({"display":"inline-block","height":(window.innerHeight * 0.05)+"px","width":(window.innerWidth * 0.05)+"px"}).html(currentChar).appendTo("#picHolder");
+			TextCounter++;
+		}
+		if(TextCounter > Text.length) {
+			clearInterval(mainPage);
+		}
+}, 1000);
+var postTimer = 0;
+if(window.innerWidth < 992) {
+	$(".panel-footer > .container").css({"width":"100%","left":"0","right":"0","padding-left":"0","padding-right":"0"});
+}
+$("#changeText").click( function() {
+	$("#picHolder").empty();
+	TextCounter = 0;
+	Text = $("#newText").val();
+});
+$("#resetText").click( function() {
+	$("#picHolder").empty();
+	TextCounter = 0;
+	Text = ogText;
+});
+});
+</script>
+<body>
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">Fall 2018</a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li><a href="../index.html">Home</a></li>
+      <li class="active"><a href="index.html">Project 1</a></li>
+      <li><a href="../wikihow/index.html">Wikihow</a></li>
+    </ul>
+  </div>
+</nav>
+<div class="panel" align="center">
+<div class="panel-heading">
+<h3>The Square Root of Negative 1</h3>
+</div>
+<div class="panel-body" id="picHolder">
+</div>
+<div class="panel-footer">
+	<div class="container" style="width:50%;left:25%;margins:0;">
+		<textarea class="form-control" id="newText" rows="6" placeholder="Enter your own text..."></textarea>
+		<button id="changeText" class="btn btn-info btn-block">Change Text</button>
+		<button id="resetText" class="btn btn-warning btn-block">Reset</button>
+	</div>
+</div>
+</div>
+</body>
+</html>
