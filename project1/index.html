@@ -25,7 +25,7 @@ var alphabet = "abcdefghijklmnopqrstuvwxyz";
 var alphaArray = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"];
 var TextCounter = 0;
 var readyNext = true;
-var mainPage = setInterval(function() {
+var mainPage =  function() {
 		var currentChar = Text[TextCounter].toLowerCase();
 		if(alphaArray.indexOf(currentChar.toLowerCase()) > -1) {
 		var currentURL = "https://pixabay.com/api/?key=10327711-6dbe01aefc91fc0527607adcd&q=letter+alphabet+"+currentChar+"&image_type=vector";
@@ -53,7 +53,7 @@ var mainPage = setInterval(function() {
 		if(TextCounter > Text.length) {
 			clearInterval(mainPage);
 		}
-}, 1000);
+}
 var postTimer = 0;
 if(window.innerWidth < 992) {
 	$(".panel-footer > .container").css({"width":"100%","left":"0","right":"0","padding-left":"0","padding-right":"0"});
@@ -62,11 +62,13 @@ $("#changeText").click( function() {
 	$("#picHolder").empty();
 	TextCounter = 0;
 	Text = $("#newText").val();
+	setInterval(mainPage(), 1000);
 });
 $("#resetText").click( function() {
 	$("#picHolder").empty();
 	TextCounter = 0;
 	Text = ogText;
+	setInterval(mainPage(), 1000);
 });
 });
 </script>
