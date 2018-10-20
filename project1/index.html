@@ -60,15 +60,17 @@ if(window.innerWidth < 992) {
 }
 $("#changeText").click( function() {
 	$("#picHolder").empty();
+	clearInterval(mainPage);
 	TextCounter = 0;
 	Text = $("#newText").val();
-	setInterval(mainPage(), 1000);
+	setInterval(mainPage, 1000);
 });
 $("#resetText").click( function() {
 	$("#picHolder").empty();
+	clearInterval(mainPage);
 	TextCounter = 0;
 	Text = ogText;
-	setInterval(mainPage(), 1000);
+	setInterval(mainPage, 1000);
 });
 });
 </script>
