@@ -1,0 +1,59 @@
+@font-face {
+	font-family:CODE;
+	src: url('CODE Bold.otf');
+}
+@font-face {
+	font-family:CODE-lt;
+	src: url('CODE Light.otf')
+}
+.jumbotron {
+text-align: center;
+text-transform: uppercase;
+background:linear-gradient(to bottom, #222, white);
+color: white;
+font-family: CODE;
+margin-top:0;
+}
+.navbar-inverse {
+	max-width: 100%;
+	margin-bottom:0;
+	border-radius:0;
+}
+.well {
+text-align:center;
+}
+.carousel-indicators {
+	top:0;
+}
+.carouselImage {
+	margin-left:auto;
+	margin-right:auto;
+	display:block;
+	max-width:100%;
+}
+.panel-heading {
+	text-align:center;
+}
+.col-xs-4 {
+	text-align:left;
+}
+.btn-block {
+	font-family:CODE-lt;
+	overflow-wrap:break-word;
+	white-space:normal;
+}
+.descrip {
+	display:inline-block;
+	max-width:100%;
+	text-align:left;
+	font-size: 2em;
+	line-height:1em;
+}
+.descripHolder {
+	text-align:center;
+}
+.panel {
+}
+h2 {
+	font-size:2em;
+}
