@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+	<title>Wikihow</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="UTF-8">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script>
+$(document).ready(function() {
+var letters = {'a':'','b':'','c':'','d':'','e':'','f':'','g':'','h':'','i':'','k':'','l':'','m':'','n':'','o':'','p':'','q':'','r':'','s':'','t':'','u':'','v':'','w':'','y':'','z':'','period':'','space':''};
+letters.a = "<div class='deco' id='a' style='line-height: 1'>&nbsp;&nbsp;███<br />█&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;█<br />█▄▄▄█<br />█&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;█</div>";
+letters.b = "<div class='deco' id='b' style='line-height: 1'>███<br />█▄▄▌<br />█&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;▌<br />███▎</div>";
+letters.c = '<div class="deco" id="c" style="line-height: 1">████<br />█&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />█&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />████</div>';
+letters.d = '<div class="deco" id="d" style="line-height: 1">███<br />█&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;█<br />█&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;█<br />███</div>';
+letters.e = '<div class="deco" id="e" style="line-height: 1">████<br />█▄▄▄▄<br />█<br />████</div>';
+letters.f = '<div class="deco" id="f" style="line-height: 1">████<br />█▄▄▄▄<br />█<br />█</div>';
+letters.g = '<div class="deco" id="g" style="line-height: 1">███<br />█<br />█&nbsp;&nbsp;&nbsp;&nbsp;██<br />███</div>';
+letters.h = '<div class="deco" id="h" style="line-height: 1">█&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;█<br />████<br />█&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;█<br />█&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;█</div>';
+letters.i = '<div class="deco" id="I" style="line-height: 1">████<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;█<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;█<br />████</div>';
+letters.k = '<div class="deco" id="k" style="line-height: 1">█&nbsp;&nbsp;&nbsp;██<br />██<br />███<br />█&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;█<br /></div>';
+letters.l = '<div class="deco" id="L" style="line-height: 1">█<br />█<br />█<br />████</div>';
+letters.m = '<div class="deco" id="m" style="line-height: 1">█&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&thinsp;&thinsp;&thinsp;█<br />██&nbsp;██<br />█&nbsp;&nbsp;█&nbsp;&nbsp;█<br />█&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&thinsp;&thinsp;&thinsp;&thinsp;█</div>';
+letters.n = '<div class="deco" id="n" style="line-height: 1">█&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;█<br />██&nbsp;&nbsp;&nbsp;█<br />█&nbsp;&nbsp;&nbsp;██<br />█&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;█</div>';
+letters.o = '<div class="deco" id="o" style="line-height: 1">████<br />█&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;█<br />█&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;█<br />████</div>';
+letters.p = '<div class="deco" id="p" style="line-height: 1">███<br />█&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;█<br />█▄▄█<br />█</div>';
+letters.q = '<div class="deco" id="q" style="line-height: 1">████<br />█&nbsp;&nbsp;&nbsp;&nbsp;██<br />███&nbsp;█</div>';
+letters.r = '<div class="deco" id="r" style="line-height: 1">███<br />█&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;█<br />█▄▄█<br />█&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;█</div>';
+letters.s = '<div class="deco" id="s" style="line-height: 1">████<br />█▄▄▄▄<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;█<br />████</div>';
+letters.t = '<div class="deco" id="t" style="line-height: 1">████<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;█<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;█</div>';
+letters.u = '<div class="deco" id="u" style="line-height: 1">█&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;█<br />█&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;█<br />█&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;█<br />████</div>';
+letters.v = '<div class="deco" id="v" style="line-height: 1">█&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;█<br />█&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;█<br />&nbsp;&nbsp;█&nbsp;&nbsp;&nbsp;█&nbsp;&nbsp;<br />&nbsp;&nbsp;███&nbsp;&nbsp;</div>';
+letters.w = '<div class="deco" id="w" style="line-height: 1">█&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;█<br />█&nbsp;&nbsp;█&nbsp;&nbsp;█<br />████</div>';
+letters.y = '<div class="deco" id="Y" style="line-height: 1">█&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;█<br />&nbsp;&nbsp;█&nbsp;&nbsp;&nbsp;█&nbsp;&nbsp;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;█&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;█&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>';
+letters.z = '<div class="deco" id="z" style="line-height: 1">████<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;██<br />██<br />████</div>';
+letters.period = '<div class="deco" id="period" style="line-height: 1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />██</div>';
+letters.space = '<div class="deco"  id="space" style="line-height: 1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br /></div>';
+
+var poem = ["Whose woods these are I think I know.","His house is in the village though;","He will not see me stopping here","To watch his woods fill up with snow.","My little horse must think it queer","To stop without a farmhouse near","Between the woods and frozen lake","The darkest evening of the year.","He gives his harness bells a shake","To ask if there is some mistake.","The only other sound’s the sweep","Of easy wind and downy flake.","The woods are lovely, dark and deep,","But I have promises to keep,","And miles to go before I sleep,","And miles to go before I sleep."];
+for(let h = 0; h < poem.length; h++) {
+	for(let i = 0; i < poem[h].length; i++) {
+		let tmp = poem[h][i].toLowerCase();
+		if(letters[tmp]) {
+			$("#mainPoem").html($("#mainPoem").html() + letters[tmp]);
+		}
+		else if(poem[h][i] == " " || poem[h][i] == ",") {
+			$("#mainPoem").html($("#mainPoem").html() + letters.space);
+			console.log(letters.space);
+		}
+		else if(poem[h][i] == ".") {
+			$("#mainPoem").html($("#mainPoem").html() + letters.period);
+			console.log(letters.period);
+		}
+	}
+	if(h != 0 && h % 4 == 0) {
+		$("#mainPoem").html($("#mainPoem").html() + "<br /><br /><br /><br /><br /><br /><br /><br />");
+	}
+	else{
+	$("#mainPoem").html($("#mainPoem").html() + "<br /><br />");
+	}
+}
+$(".bText").css({"display":"none"});
+$("button").on("mouseover", function() {
+	$(this).children(".bText").eq(0).css({"display":"inline-block"});
+	$(this).children(".glyphicon").eq(0).hide();
+});
+$("button").on("mouseout", function() {
+	$(this).children(".bText").eq(0).css({"display":"none"});
+	$(this).children(".glyphicon").eq(0).show();
+});
+});
+
+</script>
+<style>
+.stanzaLine {
+	float:left;
+	margin:10px;
+	border: 5px solid black;
+	border-radius: 5px;
+	padding:5px;
+}
+#mainPoem {
+	line-height:2vw;
+}
+.deco {
+	display:inline-block;
+
+}
+button {
+	background-color: ghostwhite;
+	border: 5px solid crimson;
+	color: crimson;
+	font-size: 1vw;
+	transition: all 0.25s ease;
+}
+button:hover {
+	background-color:crimson;
+	color:ghostwhite;
+}
+</style>
+</head>
+<body>
+<nav style="display: flex;justify-content: space-around; width:50%; border: 5px solid crimson; border-top:0; border-radius: 0 0 5px 5px; padding: 1vw; left:25%;position:relative;">
+	<button class="backButton"><span class="glyphicon glyphicon-chevron-left"></span><span class="bText">Page 1</span></button>
+	<button class="curButtn"><span class="glyphicon glyphicon-eye-open"></span><span class="bText">Page 2</span></button>
+	<button class="fwdButton"><span class="glyphicon glyphicon-chevron-right"></span><span class="bText">Page 3</span></button>
+	<button class="fwdButton"><span class="glyphicon glyphicon-chevron-right"></span><span class="bText">Page 4</span></button>
+</nav>
+<div id="mainPoem">
+</div>
+</body>
+</html>
