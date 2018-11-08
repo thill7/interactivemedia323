@@ -1,0 +1,306 @@
+<html lang='en'>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<title>Project 3</title>
+<style>
+	#viewport {
+		width:100%;
+		height: 100%;
+		perspective: 600px;
+	}
+	#cube {
+		position:relative;
+		left: 30vw;
+		top:35%;
+		width: 40vw;
+		height: 40vw;
+		transform-style: preserve-3d;
+		transform:translateZ(-20vw);
+		transition: transform 1s ease;
+	}
+	.face {
+		position:absolute;
+		width: 40vw;
+		height: 40vw;
+		text-align:center;
+		font-size: 4vw;
+		font-family: Helvetica;
+		color:white;
+		opacity:1;
+	}
+	.face > h1 {
+		font-size: 6vw;
+		position: relative;
+		top: 10vw;
+	}
+	#face1 > p {
+		font-size: 2vw;
+		position: relative;
+		top: 12vw;
+		width:50%;
+		left:25%;
+	
+	}
+	#face1 {
+		background-color:red;
+		transform: rotateY(0deg)
+		translateZ(20vw);
+	}
+	#face2 {
+		background-color:darkturquoise;
+		transform:rotateY(90deg)
+		translateZ(20vw);;
+	}
+	#face3 {
+		background-color:violet;
+		transform:rotateY(180deg)
+		translateZ(20vw);;
+	}
+	#face4 {
+		background-color:darkslategrey;
+		transform:rotateY(-90deg)
+		translateZ(20vw);;
+	}
+	#face5 {
+		background-color:grey;
+		transform:rotateX(90deg)
+		translateZ(20vw);;
+	}
+	#face6 {
+		background-color:darkcyan;
+		transform:rotateX(-90deg)
+		translateZ(20vw);;
+	}
+	#cube.showFront {
+		transform:
+		translateZ(-20vw)
+		rotateY(0deg);
+	}
+	#cube.showRight {
+		transform:
+		translateZ(-20vw)
+		rotateY(-90deg);
+	}
+	#cube.showBack {
+		transform:
+		translateZ(-20vw)
+		rotateY(-180deg);
+	}
+	#cube.showLeft {
+		transform:
+		translateZ(-20vw)
+		rotateY(90deg);
+	}
+	#cube.showTop {
+		transform:
+		translateZ(-20vw)
+		rotateX(-90deg);
+	}
+	#cube.showBottom {
+		transform:
+		translateZ(-20vw)
+		rotateX(90deg);
+	}
+	.glyphicon-chevron-up {
+		width:50%;
+		left:25%;
+		position:absolute;
+	}
+	.glyphicon-chevron-down {
+		width:50%;
+		height:10%;
+		left:25%;
+		position:absolute;
+		top:90%;
+	}
+	.glyphicon-chevron-left {
+		width:50%;
+		height:10%;
+		left:0;
+		position:absolute;
+		top:45%;
+		text-align:left;
+	}
+	.glyphicon-chevron-right {
+		width:50%;
+		height:10%;
+		left:50%;
+		position:absolute;
+		top:45%;
+		text-align:right;
+	}
+	.glyphicon:hover{
+		color:cyan;
+	}
+</style>
+<script>
+$(document).ready(function() {
+$("#cube").attr("class","showFront").css({"top":(window.innerHeight / 2 - (($("#cube").height())/2))+"px"});
+$("#faceChange").on("change",function() {
+	console.log($("#faceChange").val());
+	switch(parseInt($("#faceChange").val())) {
+		case 1: 
+			$("#cube").attr("class","showFront");
+			break;
+		case 2:
+			$("#cube").attr("class","showRight");
+			break;
+		case 3:
+			$("#cube").attr("class","showLeft");
+			break;
+		case 4:
+			$("#cube").attr("class","showBack");
+			break;
+		case 5:
+			$("#cube").attr("class","showTop");
+			break;
+		case 6:
+			$("#cube").attr("class","showBottom");
+			break;
+		default:
+			console.log("Oops!");
+	}
+});
+$(".glyphicon").click(function() {
+	if($(this).parent().eq(0).attr("id") == "face1") {
+		if($(this).hasClass("glyphicon-chevron-down")) {
+			$("#cube").attr("class","showBottom");
+		}
+		else if($(this).hasClass("glyphicon-chevron-up")) {
+			$("#cube").attr("class","showTop");
+		}
+		else if($(this).hasClass("glyphicon-chevron-left")) {
+			$("#cube").attr("class","showLeft");
+		}
+		else if($(this).hasClass("glyphicon-chevron-right")) {
+			$("#cube").attr("class","showRight");
+		}
+	}
+	else if($(this).parent().eq(0).attr("id") == "face2") {
+		if($(this).hasClass("glyphicon-chevron-down")) {
+			$("#cube").attr("class","showBottom");
+		}
+		else if($(this).hasClass("glyphicon-chevron-up")) {
+			$("#cube").attr("class","showTop");
+		}
+		else if($(this).hasClass("glyphicon-chevron-left")) {
+			$("#cube").attr("class","showFront");
+		}
+		else if($(this).hasClass("glyphicon-chevron-right")) {
+			$("#cube").attr("class","showBack");
+		}
+	}
+	else if($(this).parent().eq(0).attr("id") == "face3") {
+		if($(this).hasClass("glyphicon-chevron-down")) {
+			$("#cube").attr("class","showBottom");
+		}
+		else if($(this).hasClass("glyphicon-chevron-up")) {
+			$("#cube").attr("class","showTop");
+		}
+		else if($(this).hasClass("glyphicon-chevron-left")) {
+			$("#cube").attr("class","showRight");
+		}
+		else if($(this).hasClass("glyphicon-chevron-right")) {
+			$("#cube").attr("class","showLeft");
+		}
+	}
+	if($(this).parent().eq(0).attr("id") == "face4") {
+		if($(this).hasClass("glyphicon-chevron-down")) {
+			$("#cube").attr("class","showBottom");
+		}
+		else if($(this).hasClass("glyphicon-chevron-up")) {
+			$("#cube").attr("class","showTop");
+		}
+		else if($(this).hasClass("glyphicon-chevron-left")) {
+			$("#cube").attr("class","showBack");
+		}
+		else if($(this).hasClass("glyphicon-chevron-right")) {
+			$("#cube").attr("class","showFront");
+		}
+	}
+	else if($(this).parent().eq(0).attr("id") == "face5") {
+		if($(this).hasClass("glyphicon-chevron-down")) {
+			$("#cube").attr("class","showFront");
+		}
+		else if($(this).hasClass("glyphicon-chevron-up")) {
+			$("#cube").attr("class","showBack");
+		}
+		else if($(this).hasClass("glyphicon-chevron-left")) {
+			$("#cube").attr("class","showLeft");
+		}
+		else if($(this).hasClass("glyphicon-chevron-right")) {
+			$("#cube").attr("class","showRight");
+		}
+	}
+	if($(this).parent().eq(0).attr("id") == "face6") {
+		if($(this).hasClass("glyphicon-chevron-down")) {
+			$("#cube").attr("class","showBack");
+		}
+		else if($(this).hasClass("glyphicon-chevron-up")) {
+			$("#cube").attr("class","showFront");
+		}
+		else if($(this).hasClass("glyphicon-chevron-left")) {
+			$("#cube").attr("class","showLeft");
+		}
+		else if($(this).hasClass("glyphicon-chevron-right")) {
+			$("#cube").attr("class","showRight");
+		}
+	}
+});
+});
+
+</script>
+</head>
+<body>
+<div id="viewport">
+	<div id="cube">
+		<div class="face" id="face1">
+		<span class="glyphicon glyphicon-chevron-up"></span>
+		<span class="glyphicon glyphicon-chevron-down"></span>
+		<span class="glyphicon glyphicon-chevron-left"></span>
+		<span class="glyphicon glyphicon-chevron-right"></span>
+		<h1>Project 2</h1>
+		<p>Tanner Hill | Fall 2018</p>
+		</div>
+		<div class="face" id="face2">
+		<span class="glyphicon glyphicon-chevron-up"></span>
+		<span class="glyphicon glyphicon-chevron-down"></span>
+		<span class="glyphicon glyphicon-chevron-left"></span>
+		<span class="glyphicon glyphicon-chevron-right"></span>
+		<h1>Level 1</h1>
+		</div>
+		<div class="face" id="face3">
+		<span class="glyphicon glyphicon-chevron-up"></span>
+		<span class="glyphicon glyphicon-chevron-down"></span>
+		<span class="glyphicon glyphicon-chevron-left"></span>
+		<span class="glyphicon glyphicon-chevron-right"></span>
+		<h1>Level 2</h1>
+		</div>
+		<div class="face" id="face4">
+		<span class="glyphicon glyphicon-chevron-up"></span>
+		<span class="glyphicon glyphicon-chevron-down"></span>
+		<span class="glyphicon glyphicon-chevron-left"></span>
+		<span class="glyphicon glyphicon-chevron-right"></span>
+		<h1>Level 3</h1>
+		</div>
+		<div class="face" id="face5">
+		<span class="glyphicon glyphicon-chevron-up"></span>
+		<span class="glyphicon glyphicon-chevron-down"></span>
+		<span class="glyphicon glyphicon-chevron-left"></span>
+		<span class="glyphicon glyphicon-chevron-right"></span>
+		<h1>Level 4</h1>
+		</div>
+		<div class="face" id="face6">
+		<span class="glyphicon glyphicon-chevron-up"></span>
+		<span class="glyphicon glyphicon-chevron-down"></span>
+		<span class="glyphicon glyphicon-chevron-left"></span>
+		<span class="glyphicon glyphicon-chevron-right"></span>
+		<h1>Level 5</h1>
+		</div>
+	</div>
+</div>
+</body>
+</html>
