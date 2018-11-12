@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+	<title>Tanner Hill</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="UTF-8">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<style>
+body {
+}
+#first {
+	font-family: Helvetica;
+	font-size: 2vw;
+	line-height: 1.5vw;
+}
+.bigCap {
+	font-size: 4vw;
+	float:left;
+}
+#first > p {
+	float:left;	
+	position:relative;
+	top:-0.75vw;
+}
+#second {
+	display:block;
+	position:relative;
+	top:-2vw;
+	left:2vw;
+}
+#second > p {
+	font-size: 2vw;
+	line-height: 1vw;
+	position:relative;
+	left:-11vw;
+	word-spacing: 0.35vw;
+}
+#third {
+	font-size:7vw;
+	position: relative;
+	top:-4vw;
+	text-decoration: underline;
+}
+#fourth {
+	font-size: 3vw;
+}
+#house {
+	transform:rotate(90deg);
+	position: absolute;
+	left:-2vw;
+}
+#fourth > .is {
+	position: relative;
+	top:-2.25vw;
+	left: 2vw;
+}
+#fourth > .village {
+	position:absolute;
+	font-size: 8vw;
+	top:20.75vw;
+	left: 4vw;
+}
+#fourth > .in {
+	position: absolute;
+	top:23vw;
+	left:6vw;
+	font-size: 2vw;
+}
+#fourth > .the {
+	position: absolute;
+	top:27vw;
+	left:21.75vw;
+	font-size: 2vw;	
+}
+#fourth > .though {
+	position: relative;
+	left: 5vw;
+	top: 0.5vw;
+}
+#fifth > .stopping {
+	font-size: 4vw;
+	position:relative;
+	top:-1vw;
+}
+#fifth .here {
+	position: relative;
+	top: -2vw;
+}
+#fifth > .watch {
+	position: relative;
+	top:-13.5vw;
+	font-size:8vw;
+	left: 15vw;
+}
+#fifth > .fill {
+	position:absolute;
+	top:38vw;
+	font-size: 8vw;
+	line-height: 8vw;
+	left:38vw;
+	transform:rotate(90deg);
+}
+#fifth > .up {
+	position:absolute;
+	top:43.5vw;
+	font-size: 4vw;
+	left:44.5vw;
+	word-spacing: 4vw;
+}
+#fifth > .with {
+	position:absolute;
+	top:42.75vw;
+	font-size: 8vw;
+	line-height: 8vw;
+	left:52vw;
+	transform:rotate(90deg);
+}
+#fifth > .snow {
+	position:absolute;
+	top:41.5vw;
+	font-size: 8vw;
+	line-height: 8vw;
+	left:60vw;
+}
+
+#sixth {
+	position: relative;
+	top:-6vw;
+}
+#sixth  .big {
+	font-size: 6vw;
+}
+#sixth .littleHorse {
+	font-size:2vw;
+	position: relative;
+	top:-2.5vw;
+	word-spacing: 2vw;
+	left: 1vw;
+}
+#sixth .mustThink {
+	position: relative;
+	top:-8vw;
+}
+#sixth .toStop {
+	font-size: 8vw;
+}
+#sixth .stop {
+	position: absolute;
+	transform:rotate(90deg);
+	left:46vw;
+}
+#sixth .without {
+	font-size: 8vw;
+}
+#sixth .near {
+	position: relative;
+	left: 28vw;
+	top:-11.25vw;
+}
+#sixth .farmhouse {
+	position: relative;
+	top:-4.5vw;
+}
+#seventh {
+	position:relative;
+	width:50%;
+	text-align:center;
+	left:25%;
+	top:-8vw;
+}
+#seventh > .between {
+	font-weight: 300;
+	font-size: 8vw;
+}
+#seventh > .darkest {
+	font-size: 4vw;
+	font-weight: 900;
+}
+#seventh > .betweenThe {
+	position: absolute;
+	top: 11.5vw;
+	left: -18vw;
+	font-size: 8vw;
+	transform:rotate(90deg);
+}
+#seventh > .and {
+	position: absolute;
+	top: 7vw;
+	left: 19vw;
+	font-size: 16vw;
+	opacity:0.4;
+}
+#eigth {
+	font-size: 6vw;
+}
+#ninth {
+	font-size: 8vw;
+	line-height: 8vw;
+}
+#ninth .of {
+	font-size: 6vw;
+	position: relative;
+	left: 30vw;
+}
+#ninth .theSound {
+	font-weight:bolder;
+	font-size: 4vw;
+	position: relative;
+	left: 46.5vw;
+}
+
+#ninth .easy {
+	font-weight: normal;
+}
+#tenth > .theWoods {
+	font-size: 8vw;
+}
+#tenth .dark {
+	font-size: 8vw;
+	
+	position: relative;
+	left:36vw;
+	top:-5vw;
+}
+#tenth .darkAnd {
+	font-weight: bolder;
+}
+#tenth .deep {
+	font-weight: bolder;
+	font-size: 8vw;
+	position: relative;
+	left:36vw;
+	top:-10vw;
+}
+#eleventh {
+	font-size: 4vw;
+}
+#twelve {
+	width:75%;
+	left:12.5%;
+	position:relative;
+	font-size: 4vw;
+	text-align: center;
+	line-height: 60vw;
+}
+</style>
+<body>
+<nav><a href='./index.html'>First</a>&nbsp;&nbsp;//&nbsp;&nbsp;<a href='./index1.html'>Second</a>&nbsp;&nbsp;//&nbsp;&nbsp;<a href='./index2.html'>Third</a>&nbsp;&nbsp;//&nbsp;&nbsp;<a href='index3.html'>Fourth</a>&nbsp;&nbsp;//&nbsp;&nbsp;<a href='./index4.html'>Fifth</a>
+</nav>
+<br />
+<!-- Can use h1, h2, h3, h4, h5, h6, strong, em, ol, ul, li, a, div, span, border, margin, position, display, float, top, right, bottom, left, height, width, font properties, tex-align, line-height, letter-spacing text-transform -->
+<div id="first">
+	<span class="bigCap">W</span><p>hose<br />oods</p>
+</div>
+<div id="second">
+	<span class="bigCap">These</span><br /><br /><br /><br />
+	<p>are I think I</p>
+</div>
+<div id="third">
+	<p>KNOW</p>
+</div>
+<div id="fourth">
+	<span id="his">His</span>
+	<br />
+	<span id="house">ouse</span>
+	<br />
+	<span class="is">is</span>
+	<span class="in">in</span>
+	<span class="the">the</span>
+	<span class="village">VILLAGE</span>
+	<span class="though">though</span>
+</div>
+<br />
+<div id="fifth">
+	<p class="small">he will not see me</p>
+	<p class="stopping">stopping <br /><span class="here">here to</span></p>
+	<p class="watch">Watch his Woods</p>
+	<span class="fill">f  &nbsp;&nbsp;l&nbsp;&nbsp;l</span>
+	<span class="up">up</span>
+	<span class="with">ith</span>
+	<span class="snow">snow</span>
+</div>
+<div id="sixth">
+<p><span class="big">My</span><br /><span class="littleHorse">little horse</span><br /></p>
+<p class="mustThink"><span class="big">must think it queer</span><span class="toStop"> to <span class="stop">st&nbsp;&nbsp;&nbsp;&nbsp;p</span> </p>
+<p class="without">without <br /><span class="farmhouse">a farmhouse </span><br /><span class="near">near</span></p>
+</div>
+<div id="seventh">
+<p class="betweenThe">between</p>
+<p class="and">&</p>
+<p class="between">The Woods</p>
+<p class="darkest">the darkest evening of the year</p>
+<p class="between">Frozen Lake</p>
+</div>
+<div id="eigth">
+	<p>He gives his harness bells a <span style="position:relative;top:4vw;left:-16vw;">s</span><span style="position:relative;top:-5vw;left:-14vw;">h</span><span style="position:relative;top:4vw;left:-6vw;">k</span><span style="position:relative;top:1.5vw;">e</span></p>
+	<p class="toAsk">To ask if there is some mista<span style="position:relative;left:1vw;">k</span><span style="position:relative;left:7vw;top:2vw;">e</span></p>
+</div>
+<div id="ninth">
+	<p>The&nbsp;&nbsp;&nbsp;&nbsp;only&nbsp;&nbsp;&nbsp;&nbsp;other sound's the sweep<span class="of">of</span></p>
+	<p class="theSound"><span class="easy">Easy Wind</span> & <span class="easy">Downy Flake</span></p>
+</div>
+<div id="tenth">
+	<p class="theWoods">The woods are lovely</p>
+	<p class="dark"><span class="darkAnd">dark</span> &</p>
+	<p class="deep">deep</p>
+</div>
+<div id="eleventh">
+	<p>But I have promises to keep,</p>
+</div>
+<div id="twelve">
+	<p class="milestoGo">And miles to go before I sleep,</p>
+	<p class="milesToGo2">And miles to go before I sleep.</p>
+</div>
+</div>
+</body>
+</html>
