@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+	<title>Level 5, 3</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="UTF-8">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<style>
+	body {
+		overflow-x:hidden;
+		
+	}
+	#viewport {
+		background: linear-gradient(to top, black, grey, white);
+		width:100%;
+		height:200vh;
+		overflow: auto;
+	}
+	#poemHolder {
+		width:50%;
+		left:25%;
+		height:10vw;
+		position: absolute;
+		text-align: center;
+		top:20vw;
+		transition: all 120s ease;
+	}
+	.poemWord, .poemWordL {
+		color: white;
+		opacity: 0;
+		font-size: 2vw;
+		position: relative;
+	}
+	@keyframes appear {
+		0% {opacity:0;}
+		50% {opacity:1;}
+		100% {opacity:0;}
+	}
+</style>
+<script>
+$(document).ready( function() {
+var poem = "Whose woods these are I think I know. His house is in the village though; He will not see me stopping here To watch his woods fill up with snow. My little horse must think it queer To stop without a farmhouse near Between the woods and frozen lake The darkest evening of the year. He gives his harness bells a shake To ask if there is some mistake. The only other sound’s the sweep Of easy wind and downy flake. The woods are lovely, dark and deep, But I have promises to keep, And miles to go before I sleep, And miles to go before I sleep.";
+poem = poem.split(" ");
+var length = poem.length;
+var curDelay = 0;
+var curRow = 0;
+var scrolled = false;
+for(let i = 0; i < length; i++) {
+	if((i != length - 1) && poem[i+1][0] == poem[i+1][0].toUpperCase() && poem[i+1] != "I") {
+		$("<span>").addClass("poemWordL").css({"animation":"appear 2s ease-out forwards "+curDelay+"s"}).html(poem[i]+"&nbsp;&nbsp;").appendTo("#poemHolder");
+		curRow++;
+		$("#poemHolder").html($("#poemHolder").html() + "<br />");
+	}
+	else {
+		$("<span>").addClass("poemWord").css({"animation":"appear 1s ease-out forwards "+curDelay+"s"}).html(poem[i]+"&nbsp;&nbsp;").appendTo("#poemHolder");
+	}
+	if(curRow % 4 == 0 && curRow != 0) {
+		if((i != length - 1) && poem[i+1][0] == poem[i+1][0].toUpperCase() && poem[i+1] != "I") {
+		$("#poemHolder").html($("#poemHolder").html() + "<br />");
+	}
+	}
+	curDelay += 0.5;
+	$(".poemWordL").on("animationend", function() {
+		if(window.innerHeight - $(this).offset().top < 200 && scrolled == false) {
+			window.scrollBy(0,500);
+			scrolled = true
+		}
+	});
+	$(".poemWordL").on("webkitAnimationEnd", function() {
+		if(window.innerHeight - $(this).offset().top < 200 && scrolled == false) {
+			window.scrollBy(0,500);
+			 scrolled = true;
+		}
+	});
+}
+});
+
+</script>
+<body>
+<nav><a href='./index1.html'>First</a>&nbsp;&nbsp;//&nbsp;&nbsp;<a href='./index2.html'>Second</a>&nbsp;&nbsp;//&nbsp;&nbsp;<a href='./index3.html'>Third</a>&nbsp;&nbsp;//&nbsp;&nbsp;<a href='index4.html'>Fourth</a>&nbsp;&nbsp;//&nbsp;&nbsp;<a href='./index5.html'>Fifth</a>
+</nav>
+<br />
+<!-- Can use h1, h2, h3, h4, h5, h6, strong, em, ol, ul, li, a, div, span, border, margin, position, display, float, top, right, bottom, left, height, width, font properties, tex-align, line-height, letter-spacing text-transform -->
+<div id="viewport">
+	<div id="poemHolder">
+	</div>
+</div>
+</body>
+</html>

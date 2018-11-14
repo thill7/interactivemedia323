@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+	<title>Level 5, 1</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="UTF-8">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<style>
+	body {
+		overflow-x:hidden;
+		
+	}
+	#viewport {
+		background-color: black;
+		width:100%;
+		height:200vh;
+		overflow: auto;
+		box-shadow: 0 -10px  10px black;
+	}
+	#poemHolder {
+		width:50%;
+		left:25%;
+		position: absolute;
+		text-align: center;
+		height:80vw;
+		top:5vh;
+		transition: all 120s ease;
+
+	}
+	.poemWord {
+		color: white;
+		opacity: 0;
+		font-size: 2vw;
+	}
+	@keyframes appear {
+		from {opacity:0;}
+		to {opacity:1;}
+	}
+</style>
+<script>
+$(document).ready( function() {
+var poem = "Whose woods these are I think I know. His house is in the village though; He will not see me stopping here To watch his woods fill up with snow. My little horse must think it queer To stop without a farmhouse near Between the woods and frozen lake The darkest evening of the year. He gives his harness bells a shake To ask if there is some mistake. The only other sound’s the sweep Of easy wind and downy flake. The woods are lovely, dark and deep, But I have promises to keep, And miles to go before I sleep, And miles to go before I sleep.";
+poem = poem.split(" ");
+var length = poem.length;
+var curDelay = 0;
+var curRow = 0;
+for(let i = 0; i < length; i++) {
+	$("<span>").addClass("poemWord").css({"animation":"appear 0.5s ease "+curDelay+"s forwards"}).html(poem[i]+"&nbsp;&nbsp;").appendTo("#poemHolder");
+	if((i != length - 1) && poem[i+1][0] == poem[i+1][0].toUpperCase() && poem[i+1] != "I") {
+		$("#poemHolder").html($("#poemHolder").html() + "<br />");
+		curRow++;
+	}
+	if(curRow % 4 == 0 && curRow != 0) {
+		if((i != length - 1) && poem[i+1][0] == poem[i+1][0].toUpperCase() && poem[i+1] != "I") {
+		$("#poemHolder").html($("#poemHolder").html() + "<br />");
+	}
+	}
+	curDelay += 0.25;
+}
+setTimeout(function() {
+	$("#poemHolder").css({"filter":"blur(10px)"});
+},5000);
+});
+
+</script>
+<body>
+<nav><a href='./index1.html'>First</a>&nbsp;&nbsp;//&nbsp;&nbsp;<a href='./index2.html'>Second</a>&nbsp;&nbsp;//&nbsp;&nbsp;<a href='./index3.html'>Third</a>&nbsp;&nbsp;//&nbsp;&nbsp;<a href='index4.html'>Fourth</a>&nbsp;&nbsp;//&nbsp;&nbsp;<a href='./index5.html'>Fifth</a>
+</nav>
+<br />
+<!-- Can use h1, h2, h3, h4, h5, h6, strong, em, ol, ul, li, a, div, span, border, margin, position, display, float, top, right, bottom, left, height, width, font properties, tex-align, line-height, letter-spacing text-transform -->
+<div id="viewport">
+	<div id="poemHolder">
+	</div>
+</div>
+</body>
+</html>
