@@ -1,0 +1,132 @@
+<html lang='en'>
+<html>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="UTF-8">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<style>
+	body {
+		overflow:hidden;
+		width:100%;
+		height:100%;
+		background:radial-gradient(#ff6600 70%, #ff9933);
+		padding-top:5vh;
+		padding-left:5vw;
+		color:white;
+		font-size:3vh;
+		font-family:Helvetica;
+		perspective:200px;
+	}
+	#perspectiveBox {
+		width:100%;
+		height:100%;
+		transition: transform 1s ease;
+	}
+	#omg {
+		position:absolute;
+		top:10vh;
+		left:20vh;
+		transition:filter 0.5s ease;
+	}
+	#omg > #big {
+		font-size:12vh;
+		position:absolute;
+	}
+	#omg > #side {
+	position:absolute;
+	top:0;	
+	font-size:6vh;
+	left:10vw;
+	top:1vh;
+	}
+	#omg > #side2 {
+		position:absolute;
+		top:6vh;	
+		font-size:6vh;
+		left:10vw;
+	}
+	#box1 {
+		position:absolute;
+		top:10vh;
+		left: 40vw;
+		font-size:8vh;
+		transition:filter 0.5s ease;
+	}
+	#boxBottom {
+		position:absolute;
+		top: 50vh;
+		left:10vw;
+		font-size:8vh;
+		transition:filter 0.5s ease;
+	}
+	a:hover {
+		text-decoration: none;
+	}
+	a {
+		color:inherit;
+	}
+</style>
+<script>
+$(document).ready(function() {
+	var moved1 = false;
+	var moved2 = false;
+	var moved3 = false;
+	var offsetLeftB1 = $("#box1").offset().left - ((window.innerWidth / 100) * 60);
+	var offsetTopB1 = $("#box1").offset().top + ((window.innerHeight / 100) * 10);
+	var offsetLeftOmg = $("#omg > #big").offset().left + ((window.innerWidth / 100) * 15);
+	var offsetTopOmg = $("#omg").offset().top + ((window.innerHeight / 100) *15);
+	var offsetLeftB2 = $("#boxBottom").offset().left - ((window.innerWidth / 100) * 5);
+	var offsetTopB2 = $("#boxBottom").offset().top - ((window.innerHeight / 100) * 75);
+	function showOmg() {
+		if(moved1 == false) {
+		$("#omg").css("filter","blur(5px)");
+		$("#perspectiveBox").css("transform","translate3D("+offsetLeftOmg+"px,"+offsetTopOmg+"px,12vh)");
+		moved1 = true;
+		}
+	}
+	$("#perspectiveBox").on("transitionend",function() {
+		$("#omg").css("filter","");
+		$("#box1").css("filter","");
+		$("#boxBottom").css("filter","");
+	});
+	function showBox1() {
+		if(moved2 == false) {
+		$("#box1").css("filter","blur(5px)");
+		$("#perspectiveBox").css("transform","translate3D("+offsetLeftB1+"px,"+offsetTopB1+"px,6vh)");
+		moved2 = true;
+		}
+	}
+	function showBox2() {
+		if(moved3 == false) {
+		$("#boxBottom").css("filter","blur(5px)");
+		$("#perspectiveBox").css("transform","translate3D("+offsetLeftB2+"px,"+offsetTopB2+"px,4vh)");
+		moved3 = true;
+		}
+	}
+	function showLink() {
+		$("#boxBottom > p").html("If anyone can say<br />With any sort of Certainty<br />that there is something to <a href='./page4.html'>believe</a>");
+		$("a").hover(function() {$("body").css({"background":"black","color":"black"});$(this).css("color","white");},function() {$("body").css({"background":"radial-gradient(#ff6600 70%, #ff9933)","color":"white"});});
+	}
+	setTimeout(showOmg, 1000);
+	setTimeout(showBox1, 3000);
+	setTimeout(showBox2, 5000);
+	setTimeout(showLink, 6000);
+});
+
+</script>
+</head>
+<body>
+	<div id="perspectiveBox">
+	<div id="omg">
+	<span id="big">Oh</span> <span id="side">my</span><span id="side2">god</span>
+	</div>
+	<div id="box1">
+		<p>I will hold my tongue and I'll breathe easily.</p>
+	</div>
+	<div id="boxBottom">
+		<p>If anyone can say<br />With any sort of Certainty<br />that there is something to believe</p>
+	</div>
+	</div>
+</body>
+</html>

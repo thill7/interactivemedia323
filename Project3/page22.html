@@ -1,0 +1,71 @@
+<html lang='en'>
+<html>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="UTF-8">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<style>
+	body {
+		overflow:hidden;
+		width:100%;
+		height:100%;
+		background-color:black;
+		padding-top:5vh;
+		padding-left:5vw;padding-right:5vw;
+	}
+	p {
+		font-size:9vh;
+		text-align:center;
+		color:white;
+		transition:color 25s ease;
+	}
+	p > a {
+		text-decoration: none;
+		color:white;
+	}
+	#choices > a {
+		text-decoration:none;
+		color:inherit;
+		transition:color 25s ease;
+	}
+	#back > a {
+		text-decoration:none;
+		color:inherit;
+		transition:color 25s ease;
+	}
+	@keyframes blur {
+		0% {filter:blur(0px);}
+		50% {filter:blur(10px);}
+		100% {filter:blur(0px);}
+	}
+	#made {
+		opacity:0;
+		transition: opacity 1s ease;
+	}
+</style>
+<script>
+$(document).ready(function() {
+	textParts = ["shallow fantasies we ","ugly promises we "];
+	var index = 0;
+	function changeText() {
+		if(index < 2) {
+			$("#choices").css("animation","blur 1s ease");
+			console.log(index);
+			setTimeout( function() {$("#choices").html(textParts[index]);index++;},500);
+			setTimeout( function() {$("#choices").css("animation","");},1000);
+		}
+		else {
+			$("#made").css("opacity","1");
+		}
+		
+	}
+	$("#choices").mouseover(changeText);
+});
+
+</script>
+</head>
+<body>
+	<p id="stray"><br />We swore we'd never stray,<br /> right before we went our separate ways.<br /> And now we're looking <span id="back"><a href='./page1.html'>back</a></span>, <br />we're second guessing all the<br /><span id="choices">choices that we </span><span id="made">made.</span></p>
+</body>
+</html>

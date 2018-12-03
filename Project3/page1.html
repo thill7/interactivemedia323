@@ -1,0 +1,149 @@
+<html lang='en'>
+<html>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="UTF-8">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<style>
+	body {
+		overflow:hidden;
+		width:100%;
+		height:100%;
+		background-color:ghostwhite;
+		transition:background-color 10s ease;
+	}
+	#rotate {
+		height:200%;
+		top:0;
+		width:50vw;
+		left:25vw;
+		
+		transition:transform 5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+		position: absolute;
+		font-size:4vh;
+		color:white;
+		font-family: Helvetica;
+	}
+	#sun {
+		position: absolute;
+		width:100%;
+		top:20vh;
+		height:50vh;
+		
+	}
+	#sun > img {
+		height:100%;
+		position: relative;
+		width:100%;
+		left:0;
+	}
+	#sun > p {
+		position: absolute;
+		width:30%;
+		top:15vh;
+		text-align: center;
+		left:35%;
+	}
+	#moon {
+		position: absolute;
+		width:100%;
+		top:130vh;
+		height:50vh;
+		transform:rotate(180deg);
+	}
+	#moon > img {
+		height:100%;
+		position: relative;
+		width:100%;
+	}
+	#moon > p {
+		position: absolute;
+		width:30%;
+		top:15vh;
+		text-align: center;
+		left:35%;
+	}
+	body > h2 {
+		position:absolute;
+		font-size: 5vh;
+		width: 80%;
+		left: 10%;
+		top:80%;
+		position:fixed;
+		text-align:center;
+		transition: opacity 5s ease;
+		opacity:0;
+	}
+	body > h2 > a {
+		text-decoration:none;
+		color:black;
+		cursor:default;
+	}
+	a:hover {
+		color:inherit;
+		text-decoration:none;
+	}
+</style>
+<script>
+$(document).ready(function() {
+	var played = 0;
+	var sun = true;
+	var ready = true;
+	var rotationVal = 0;
+	function addLink() {
+		$("h2 > a").attr("href","./page2.html");
+	
+	}
+	$(".rotateTrigger").mouseover(function() {
+		if(sun == true && ready == true) {
+		rotationVal += 180;
+		$("#rotate").css("transform","rotate("+rotationVal+"deg)");
+		$("body").css("background-color","dimgrey");
+		sun = false;
+		ready = false;
+		played++;
+		}
+		else {
+		if(ready == true) {
+		rotationVal += 180;
+		$("#rotate").css("transform","rotate("+rotationVal+"deg)");
+		$("body").css("background-color","ghostwhite");
+		sun = true;
+		ready = false;
+		played++;
+		}
+		}	
+	});
+	$("#rotate").on("webkitTransitionEnd", function() {
+		ready = true;
+		if(played == 2) {
+			$("body > h2").css("opacity","1");
+			$("body > h2 > a").get(0).setAttribute("href","./page2.html");		
+		}
+	});
+	$("#rotate").on("transitionend", function() {
+		ready = true;
+		if(played == 2) {
+			$("body > h2").css("opacity","1");
+			addLink();	
+		}
+	});
+});
+
+</script>
+</head>
+<body>
+	<div id="rotate">
+		<div id="sun" class="rotateTrigger">
+			<img src="sun.svg" />
+			<p id="sunText">I don't know where the sun goes every night</p>
+		</div>
+		<div id="moon" class="rotateTrigger">
+			<img src="moon.svg" />
+			<p id="moonText">Or where the moon goes <br />when its bright.</p>
+		</div>
+	</div>
+	<h2>I won't mind, as long as they're there in <a href="">time</a></h2>
+</body>
+</html>

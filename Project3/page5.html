@@ -1,0 +1,147 @@
+<html lang='en'>
+<html>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="UTF-8">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<style>
+	body {
+		overflow:hidden;
+		width:100%;
+		height:100%;
+		background:radial-gradient(#ff6600 70%, #ff9933);
+		padding-top:5vh;
+		padding-left:5vw;
+		padding-right:5vw;
+		color:white;
+		font-size:3vh;
+		font-family:Helvetica;
+		perspective:200px;
+	}
+	#perspectiveBox {
+		width:100%;
+		height:100%;
+		transition: transform 1s ease;
+	}
+	#omg {
+		position:absolute;
+		top:10vh;
+		left:20vh;
+		transition:filter 0.5s ease;
+	}
+	#omg > #big {
+		font-size:12vh;
+		position:absolute;
+	}
+	#omg > #side {
+	position:absolute;
+	top:0;	
+	font-size:6vh;
+	left:10vw;
+	top:1vh;
+	}
+	#omg > #side2 {
+		position:absolute;
+		top:6vh;	
+		font-size:6vh;
+		left:10vw;
+	}
+	#box1 {
+		position:absolute;
+		top:10vh;
+		left: 10vw;
+		font-size:10vh;
+		transition:filter 0.5s ease;
+	}
+	#box2 {
+		position:absolute;
+		top:50vh;
+		left:45vw;
+		font-size:6vh;
+		transition:filter 0.5s ease;
+		transform: rotate(20deg);
+	}
+	#box3 {
+		position:absolute;
+		top: 80vh;
+		left:30vw;
+		font-size:6vh;
+		transition:filter 0.5s ease;
+		transform: rotate(-20deg);
+	}
+	a {
+		color:inherit;
+		text-decoration: none;
+	}
+</style>
+<script>
+$(document).ready(function() {
+	var moved1 = false;
+	var moved2 = false;
+	var moved3 = false;
+	var offsetTopB2 = $("#box2").offset().top - ((window.innerHeight / 100) * 35);
+	var offsetLeftB2 = $("#box2").offset().left - ((window.innerWidth / 100) * 65);
+	var offsetTopB3 = $("#box3").offset().top - ((window.innerHeight / 100) * 110);
+	var offsetLeftB3 = $("#box3").offset().left - ((window.innerWidth / 100) * 28);
+	function showB2() {
+		if(moved1 == false) {
+		$("#box2").css("filter","blur(5px)");
+		$("#perspectiveBox").css("transform","translate3D("+offsetLeftB2+"px,"+offsetTopB2+"px,8vh) rotate(-20deg)");
+		moved1 = true;
+		}
+	}
+	function showB3() {
+		if(moved2 == false) {
+		$("#box3").css("filter","blur(5px)");
+		$("#perspectiveBox").css("transform","translate3D("+offsetLeftB3+"px,"+offsetTopB3+"px,8vh) rotate(20deg)");
+		moved2 = true;
+		}
+	}
+	function showLink() {
+		$("#box3 > p").html("And thinking about the <a href='./page7.html'>end?</a>");
+		$("a").mouseover(function() {
+		$("body").css({"background":"black","color":"black"});
+		$(this).css("color","white");
+		});
+		$("a").mouseout(function() {
+		$("body").css({"background":"radial-gradient(#ff6600 70%, #ff9933)","color":"white"});
+		$(this).css("color","inherit");
+		});
+	}
+	$("#perspectiveBox").on("transitionend",function() {
+		$("#box2").css("filter","");
+		$("#box3").css("filter","");
+	});
+	
+	/*
+	function showBox2() {
+		if(moved3 == false) {
+		$("#boxBottom").css("filter","blur(5px)");
+		$("#perspectiveBox").css("transform","translate3D("+offsetLeftB2+"px,"+offsetTopB2+"px,4vh)");
+		moved3 = true;
+		}
+	}
+	setTimeout(showOmg, 2000);
+	setTimeout(showBox2, 8000);*/
+	setTimeout(showB2, 3000);
+	setTimeout(showB3, 5000);
+	setTimeout(showLink, 6000);
+});
+
+</script>
+</head>
+<body>
+	<div id="perspectiveBox">
+	<div id="box1">
+	<p>Did you ever think that we'd be <br />three steps from <br />the ledge?</p>
+	</div>
+	<div id="box2">
+	<p>Contemplating awful things,</p>
+	</div>
+	<div id="box3">
+	<p>And thinking about the end?</p>
+	</div>
+	</div>
+</body>
+</html>

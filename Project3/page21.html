@@ -1,0 +1,142 @@
+<html lang='en'>
+<html>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="UTF-8">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<style>
+	body {
+		overflow:hidden;
+		width:100%;
+		height:100%;
+		background:dimgrey;
+		padding-top:5vh;
+		padding-left:5vw;
+		color:white;
+		font-size:10vh;
+		font-family:Helvetica;
+		-webkit-touch-callout: none; /* iOS Safari */
+        -webkit-user-select: none; /* Safari */
+        -khtml-user-select: none; /* Konqueror HTML */
+        -moz-user-select: none; /* Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+        user-select: none;
+	}
+	.puzzle {
+		cursor: grab;
+		position: absolute;
+		width:60vh;
+		height:60vh;
+		z-index:1;
+	}
+	.puzzle > p {
+		position:absolute;
+		color: white;
+		font-size: 3vh;
+		top:25vh;
+		width:40vh;
+		left:10vh;
+		text-align:center;
+		opacity:0;
+		transition: opacity 2s ease;
+	}
+	.puzzle img {
+		width:60vh;
+		height:60vh;
+	}
+	#modal {
+		width:100vw;
+		height:20vh;
+		font-size: 25vh;
+		background:radial-gradient(#ff6600 70%, #ff9933);
+		position:fixed;
+		top:40vh;
+		left:0;
+		z-index:99;
+		text-align:center;
+		display:none;
+	}
+	#modal > h2 {
+		font-size: 15vh;
+	}
+	#puzzleBox {
+		position:absolute;
+		z-index:1;
+		width:100vw;
+		height:100vh;
+		transition:filter 1s ease;
+	}
+</style>
+<script>
+$(document).ready(function() {
+	var dragTarget = null;
+	$(".puzzle > img").attr("draggable","false");
+	var revealed = 0;
+	$('.puzzle').mousedown(function() {
+		if(dragTarget == null) {
+		dragTarget = $(this);
+		$(this).children("p").eq(0).css("opacity","1");
+		revealed++;
+		console.log(revealed);
+		}
+		if(revealed > 12) {
+		dragTarget = null;
+			$("#modal").css("display","block");
+			$("#puzzleBox").css("filter","blur(20px)");
+		}
+	});
+	$('.puzzle').mouseup(function() {
+		dragTarget = null;
+	});
+	$(window).mousemove(function(e) {
+		if(dragTarget != null) {
+			var leftOffset = e.pageX - ($(dragTarget).width() / 2);
+			var topOffset = e.pageY - ($(dragTarget).height() / 2);
+			$(dragTarget).css({"left":leftOffset+"px","top":topOffset+"px"});
+		}
+	});
+	$("#puzzleBox").on("transitionend",function() {
+		setTimeout(function(){window.location.href="./page22.html";},10000);
+	});
+});
+
+</script>
+</head>
+<body>
+	<div id="puzzleBox">
+	<div class="puzzle" style="left:530px;top:-17px;">
+	<img src="pz1.svg" />
+	<p>Nobody mentioned that the pieces wouldn't fit</p>
+	</div>
+	<div class="puzzle" style="width:40vh;transform:rotate(45deg); left:378px; top:195px;">
+	<img src="pz1.svg" style="width:40vh;"/>
+	</div>
+	<div class="puzzle" style="left:51px;top:-66px;">
+	<img src="pz4.svg" />
+	</div>
+	<div class="puzzle" style="left:600px;top:-66px;">
+	<img src="pz4.svg" />
+	</div>
+	<div class="puzzle" style="left:30px;top:329px;">
+	<img src="pz2.svg" />
+	</div>
+	<div class="puzzle" style="left:667px;top:328px;">
+	<img src="pz3.svg" />
+	<p>You can rearrange them all you want,</p>
+	</div>
+	<div class="puzzle" style="left:350px;top:300px;">
+	<img src="pz4.svg" />
+	</div>
+	<div class="puzzle" style="left:1001px;top:-43px;transform:rotate(90deg);">
+	<img src="pz3.svg" />
+	</div>
+	<div class="puzzle" style="left:1138px;top:337px;transform:rotate(90deg);">
+	<img src="pz4.svg" />
+	</div>
+	</div>
+	<div id="modal">
+	<h2>But the puzzle it was rigged.</h2>
+	</div>
+</body>
+</html>

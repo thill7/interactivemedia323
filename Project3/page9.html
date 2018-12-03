@@ -1,0 +1,165 @@
+<html lang='en'>
+<html>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="UTF-8">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<style>
+	body {
+		overflow:hidden;
+		width:100%;
+		height:100%;
+		background-color:ghostwhite;
+		padding-top:2vh;
+		padding-left:5vw;padding-right:5vw;
+		background-color:dimgrey;
+	}
+	p {
+		font-size:8vh;
+		text-align:center;
+		color:black;
+		transition:color 5s ease;
+	}
+	#die {
+	}
+	#die > a {
+		text-decoration: none;
+		color: ghostwhite;
+	}
+	.container{
+	  margin:80px auto;
+	  width: 6vw;
+	  height: 6vw;
+	  position:fixed;
+	  top:20vh;
+	  left:47vw;
+	  transform-origin:center bottom;
+	  animation-name: flicker;
+	  animation-duration:0.5s;
+	  animation-delay:200ms;
+	  animation-timing-function: ease-in;
+	  animation-iteration-count: infinite;
+	  animation-direction: alternate;
+	}
+
+	.flame{
+	  bottom:0;
+	  position:absolute;
+	  border-bottom-right-radius: 50%;
+	  border-bottom-left-radius: 50%;
+	  border-top-left-radius: 50%;
+	  transform:rotate(-45deg) scale(1.5,1.5);
+	}
+
+	.yellow{
+	  left:15px; 
+	  width: 30px;
+	  height: 30px;
+	  background:gold;
+	  box-shadow: 0px 0px 9px 4px gold;
+	}
+
+	.orange{
+	  left:10px; 
+	  width: 40px;
+	  height: 40px;
+	  background:orange;
+	  box-shadow: 0px 0px 9px 4px orange;
+	}
+
+	.red{
+	  left:5px;
+	  width: 50px;
+	  height: 50px;
+	  background:OrangeRed;
+	  box-shadow: 0px 0px 5px 4px OrangeRed;
+	}
+
+	.white{
+	  left:15px; 
+	  bottom:-4px;
+	  width: 30px;
+	  height: 30px;
+	  background:white;
+	  box-shadow: 0px 0px 9px 4px white;
+	}
+
+	.circle{
+	  border-radius: 50%;
+	  position:absolute;  
+	}
+
+	.blue{
+	  width: 10px;
+	  height: 10px;
+	  left:25px;
+	  bottom:-25px; 
+	  background: SlateBlue;
+	  box-shadow: 0px 0px 15px 10px SlateBlue;
+	}
+
+	.black{
+	  width: 40px;
+	  height: 40px;
+	  left:10px;
+	  bottom:-60px;  
+	  background: black;
+	  box-shadow: 0px 0px 15px 10px black;
+	}
+
+	@keyframes flicker{
+	  0%   {transform: rotate(-1deg);}
+	  20%  {transform: rotate(1deg);}
+	  40%  {transform: rotate(-1deg);}
+	  60%  {transform: rotate(1deg) scaleY(1.04);}
+	  80%  {transform: rotate(-2deg) scaleY(0.92);}
+	  100% {transform: rotate(1deg);}
+	}
+	#candle {
+
+		width:30vw;
+		position:fixed;
+		left: 37.25vw;
+		bottom:0vh;
+		fill:white;
+	}
+	#circle {
+		border-radius:50%;
+		background:linear-gradient(to top, rgba(246,238,115,0.5), rgba(4,4,0,1));
+		width:100vw;
+		position:fixed;
+		height:50vw;
+		left:0;
+		top:-50vh;
+		z-index:-1;
+		box-shadow: 0px 0px 50px 0 dimgrey inset;
+	}
+</style>
+<script>
+$(document).ready(function() {
+	$(".container").click(function() {
+		$(this).css("display","none");
+		$("body").css("background-color","black");
+		$("#circle").css("display","none");
+		$("#text > #die").html("when we <a href='./page10.html'>die.</a>").css("color","ghostwhite");
+	});
+});
+
+</script>
+</head>
+<body>
+<div class="container">
+  <div class="red flame"></div>
+  <div class="orange flame"></div>
+  <div class="yellow flame"></div>
+  <div class="white flame"></div>
+  <div class="blue circle"></div>
+</div>
+<img src="candle.svg" id="candle" />
+<div id="circle">
+
+</div>
+<p id="text">Noone knows where the soul goes<br />when we die,<br /><span id="die">when we die.</span></p>
+</body>
+</html>

@@ -1,0 +1,48 @@
+<html lang='en'>
+<html>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="UTF-8">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<style>
+	body {
+		overflow:hidden;
+		width:100%;
+		height:100%;
+		background-color:white;
+		padding-top:5vh;
+		padding-left:5vw;padding-right:5vw;
+	}
+	p {
+		font-size:9vh;
+		text-align:center;
+		color:black;
+		transition:color 25s ease;
+	}
+	p > a {
+		text-decoration: none;
+		color:ghostwhite;
+	}
+	#choices > a {
+		text-decoration:none;
+		color:inherit;
+		transition:color 25s ease;
+	}
+	#back > a {
+		text-decoration:none;
+		color:inherit;
+		transition:color 25s ease;
+	}
+</style>
+<script>
+$(document).ready(function() {
+	setTimeout(function() {$("#stray").css("color","white");$("#choices, #back").css("color","silver");}, 1000);
+});
+
+</script>
+</head>
+<body>
+	<p id="stray"><br />We swore we'd never stray,<br /> right before we went our separate ways.<br /> And now we're looking <span id="back"><a href='./page9.html'>back</a></span>, <br />we're second guessing all the <span id="choices"><a href="./page16.html">choices</a></span> <br />that we made.</p>
+</body>
+</html>

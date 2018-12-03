@@ -1,0 +1,92 @@
+<html lang='en'>
+<html>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="UTF-8">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<style>
+	body {
+		overflow:hidden;
+		width:100%;
+		height:100%;
+		background:radial-gradient(#0061ff 70%, #4286f4);
+		padding-top:5vh;
+		padding-left:5vw;
+		color:white;
+		font-size:3vh;
+		font-family:Helvetica;
+		-webkit-touch-callout: none; /* iOS Safari */
+        -webkit-user-select: none; /* Safari */
+        -khtml-user-select: none; /* Konqueror HTML */
+        -moz-user-select: none; /* Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+        user-select: none;
+	}
+	mid {
+		width:100vw;
+		height:100vh;
+		position:absolute;
+		text-align:center;
+		z-index:1;
+	}
+	p {
+		font-size:60vh;
+		color:white;
+		text-align:center;
+		width:100vw;
+		position:relative;
+		left:-5vw;
+		cursor:pointer;
+		transition: all 1s ease;
+	}
+	a {
+		color:inherit;
+		text-decoration:none;
+	}
+	a:hover {
+		color:inherit;
+		text-decoration:none;
+	}
+	#believe {
+		position:absolute;
+		z-index:2;
+		color:white;
+		font-size:8vh;
+		width:80vw;
+		left:10vw;
+		top:70vh;
+		opacity:0;
+		transition: opacity 1s ease;
+	}
+</style>
+<script>
+$(document).ready(function() {
+	var text = "Oh my god I will hold my tongue and I'll breath easily";
+	text = text.split(" ");
+	var index = 1;
+	console.log(text.length);
+	$("#mid > p").eq(0).click(function() {
+		if(index < text.length - 1) {
+		$(this).html(text[index]);
+		}
+		else if(index == text.length - 1) {
+		$(this).html(text[index]);
+		$(this).css({"transform":"translateY(-20vh)"});
+		}
+		$(this).on("transitionend", function() {
+			$("#believe").css("opacity","1");
+		});
+		index++;
+	});
+});
+
+</script>
+</head>
+<body>
+	<div id="mid">
+		<p>Oh</p>
+		<p id="believe">If anyone can say with any sort of certainty<br /> that there is something to <a href='./page20.html'> believe</a></p>
+	</div>
+</body>
+</html>
