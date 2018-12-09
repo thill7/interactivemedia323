@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<!-- saved from url=(0086)http://garimathakur.github.io/interactivemedia324/Exercise2/Section-2/responsive2.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+  
+  <title>Responsive World</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+<style>
+body {
+	transition: background-color 2s ease;
+	text-align:center;
+}
+#flex {
+	display: flex;
+	margin: 5vh;
+	flex-wrap: wrap;
+	background-color:black;
+	justify-content:space-between;
+        
+}
+#flex > div {
+	height: 35vh;
+	width: 100%;
+	background-color: ghostwhite;
+	border-radius: 5px;
+	flex: 0 1 20%;
+	margin:5%;
+	
+}
+h1 {
+	font-size: 8vh;
+	font-family:Helvetica;
+        color: black;
+}
+@media only screen and (max-width: 1024px) {
+    body {
+        background-color: black;
+    }
+    #flex > div {
+	flex:0 1 20%;
+    }
+    h1 {
+	font-size: 8vh;
+	font-family:Helvetica;
+        color: white;
+    }
+}
+@media only screen and (max-width: 768px) {
+    body {
+        background-color: lightblue;
+    }
+    #flex > div {
+	flex:0 1 30%;
+    }
+    h1 {
+	font-size: 8vh;
+	font-family:Consolas;
+    }
+}
+@media only screen and (max-width: 600px) {
+    body {
+        background-color: darkcyan;
+    }
+    #flex > div {
+	flex:0 1 100%;
+    }
+    h1 {
+	font-size: 8vh;
+	font-family:Garamond;
+    }
+}
+@media only screen and (max-width: 480px) {
+    body {
+        background-color: dimgrey;
+    }
+}
+@media only screen and (max-width: 320px) {
+    body {
+        background-color: crimson;
+    }
+}
+</style>
+</head>
+
+<body> 
+
+	<h1>Exercise 6</h1>
+	<div id="flex">
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	</div>
+
+
+</body></html>
