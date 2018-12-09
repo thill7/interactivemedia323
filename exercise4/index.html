@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+	<title>Exercise 3</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="UTF-8">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<style>
+#canvas {
+	height:100%;
+	width:100%;
+	position: absolute;
+	top:0;
+	left:0;
+	background-color: ghostwhite;
+}
+#table {
+	position: absolute;
+	top:30%;
+	width:100%;
+	height:70%;
+	background-color: white;
+	perspective: 400px;
+}
+#tableFront {
+	position: absolute;
+	top:80%;
+	height:20%;
+	width: 100%;
+	background: linear-gradient(to bottom, lightgrey , dimgrey 5%, grey 80%, dimgrey );
+}
+#tableTop {
+	transform-origin:center bottom;
+	transform: rotateX(45deg);
+	width:100%;
+	height:80%;
+	background: linear-gradient(to top, grey, dimgrey);
+}
+#phone {
+	transform-style: preserve-3d;
+	position: absolute;
+	width:8%;
+	height:30%;
+	top:50%;
+	left:40%;
+	
+	transition:all 2s ease;
+	transform-origin: center bottom;
+}
+#phone:hover {
+	
+}
+.phoneTop {
+	width:100%;
+	height:90%;
+	position: absolute;
+	transform-style: preserve-3d;
+	border-top: 0 solid white;
+	border-top-right-radius: 5px;
+	border-top-left-radius: 5px;
+	background: linear-gradient(to right, lightcyan 5%, cyan 90%, lightcyan);
+}
+.phoneFront {
+	width:100%;
+	height:10%;
+	top:90%;
+	position: absolute;
+	background-color: darkcyan;
+	transform-origin: center top;
+	transform: rotateX(-45deg);
+	transform-style: preserve-3d;
+	box-sizing: border-box;
+}
+.phoneScreen {
+	transform-style: preserve-3d;
+	width:100%;
+	left:0;
+	position: absolute;
+	top:5%;
+	height:80%;
+	background: linear-gradient(to right, lightgrey 5%, grey 90%, lightgrey);
+}
+.phoneButton {
+	width:30%;
+	top:90%;
+	height:5%;
+	position: absolute;
+	background-color: grey;
+	left:35%;
+	border: 1px solid lightgrey;
+	border-radius:5px;
+	top: 90%;
+	left: 35%;
+}
+#notebook {
+	transform-style: preserve-3d;
+	width: 15%;
+	position: absolute;
+	top:30%;
+	left:60%;
+	height: 60%;
+	width:25%;
+
+}
+#topCover {
+	background-color: cyan;
+	width:100%;
+	height:100%;
+	z-index: 7;
+	position: absolute;
+	top:0;
+}
+#bottomCover {
+	background-color: darkcyan;
+	width:100%;
+	height:100%;
+	position:absolute;
+	top: 10%;
+	z-index: 3;
+}
+#middle {
+	background-color: white;
+	width:90%;
+	height:90%;
+	position:absolute;
+	top: 15%;
+	z-index: 5;
+	left: 5%;
+}
+#sideBind {
+	position:absolute;
+	width:15%;
+	background-color:dimgrey;
+	height:100%;
+	display: flex;
+	flex-direction:column;
+	justify-content: space-around;
+}
+#phoneScreen:hover {
+	cursor:crossshair;
+}
+.binding {
+	width:100%;
+	background-color:grey;
+	height:5%;
+}
+#side {
+	position:absolute;
+	width:15%;
+	background-color:cyan;
+	height:100%;
+	z-index:8;
+	transform: rotateY(-90deg);
+	transform-origin: left center;
+	
+	top: 10%;
+}
+#topCover > h2 {
+	width:80%;
+	left: 40%;
+	position:absolute;
+	color: white;
+	text-decoration: underline;
+}
+</style>
+<script>
+	$(document).ready(function() {
+		$("#phone").click(function() {
+			window.location.href="../index.html";
+		});
+			
+	});
+</script>
+</head>
+<body>
+	<div class="canvas">
+		<div id="table">
+			<div id="tableFront">
+			</div>
+			<div id="tableTop">
+				<div id="phone">
+					<div class="phoneTop">
+						<div class="phoneScreen">
+						</div>
+						<div class="phoneButton">
+						</div>
+					</div>
+					<div class="phoneFront">
+					</div>
+					<div class="phoneSide">
+					</div>
+				</div>
+				<div id="notebook">
+					<div id="topCover">
+					<h2>Notes</h2>
+						<div id="sideBind">
+							<div class="binding">
+							</div>
+							<div class="binding">
+							</div>
+							<div class="binding">
+							</div>
+							<div class="binding">
+							</div>
+							<div class="binding">
+							</div>
+							<div class="binding">
+							</div>
+							<div class="binding">
+							</div>
+							<div class="binding">
+							</div>
+							<div class="binding">
+							</div>
+							<div class="binding">
+							</div>
+						</div>
+					</div>
+					<div id="side">
+					</div>
+					<div id="middle">
+					</div>
+					<div id="bottomCover">
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
